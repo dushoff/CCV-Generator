@@ -20,6 +20,8 @@ Sources += jd.mk
 
 Sources += $(wildcard ccv_generator/*.py)
 
+Sources += pyproject.toml
+
 ######################################################################
 
 ### Makestuff

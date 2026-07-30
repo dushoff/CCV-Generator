@@ -17,3 +17,6 @@ dependencies = [
 
 [project.scripts]
 ccv_generator = "ccv_generator.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ccv_generator*"]
