@@ -5,6 +5,9 @@ from pathlib import Path
 from platformdirs import user_cache_dir
 from datetime import datetime, timedelta
 
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 APP_NAME = "CCCVGenerator"
 CACHE_DIR = Path(user_cache_dir(APP_NAME))
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
@@ -55,7 +58,7 @@ def retrieve_cached_file(url):
         if etag:
             headers["If-None-Match"] = etag
 
-    response = requests.get(url, headers=headers, stream=True)
+    response = requests.get(url, headers=headers, stream=True, verify=False)
 
     if response.status_code == 200:
         # Save the new file
